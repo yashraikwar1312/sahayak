@@ -1,0 +1,11 @@
+{
+  "name": "Sahayak",
+  "description": "An advanced, multilingual AI-powered Emergency Assistant that acts as a secure digital sanctuary—providing critical real-time guidance, category-specific triage, interactive safety maps, emergency hotlines, and instant SOS alerts designed to reduce cognitive load in high-stress situations.",
+  "requestFramePermissions": [
+    "geolocation",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
