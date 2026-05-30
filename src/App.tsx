@@ -1812,6 +1812,137 @@ export default function App() {
                 </div>
               </section>
 
+              {/* ── FEATURES SHOWCASE SECTION ── */}
+              <section className="space-y-3.5">
+                <div className="flex items-center gap-2">
+                  <Sparkles size={16} className="text-pink-400" />
+                  <h2 className="font-sans font-extrabold text-sm uppercase tracking-wider text-pink-300">
+                    {language === 'hi' ? '✨ प्रमुख सुविधाएं' : '✨ Powerful Features'}
+                  </h2>
+                </div>
+
+                {/* Features Grid (3x3) */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  
+                  {/* Feature 1: Voice AI */}
+                  <div className="glass-card rounded-2xl p-4 border border-indigo-500/20 bg-indigo-950/20 hover:border-indigo-500/40 hover:bg-indigo-950/30 transition-all duration-200 cursor-pointer group">
+                    <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 group-hover:bg-indigo-500/20 flex items-center justify-center mb-3 transition-all">
+                      <Mic size={18} className="text-indigo-400" />
+                    </div>
+                    <h3 className="font-sans font-bold text-sm text-white mb-1 line-clamp-2">
+                      {language === 'hi' ? '🎤 आवाज एआई' : '🎤 Voice AI'}
+                    </h3>
+                    <p className="font-sans text-[10px] text-indigo-200/70 leading-tight">
+                      {language === 'hi' ? 'बिना टैप किए आवाज़ कमांड निष्पादित करें' : 'No-tap voice commands'}
+                    </p>
+                  </div>
+
+                  {/* Feature 2: Multi-Language */}
+                  <div className="glass-card rounded-2xl p-4 border border-purple-500/20 bg-purple-950/20 hover:border-purple-500/40 hover:bg-purple-950/30 transition-all duration-200 cursor-pointer group">
+                    <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 group-hover:bg-purple-500/20 flex items-center justify-center mb-3 transition-all">
+                      <Languages size={18} className="text-purple-400" />
+                    </div>
+                    <h3 className="font-sans font-bold text-sm text-white mb-1">
+                      {language === 'hi' ? '🌐 बहुभाषी' : '🌐 Bilingual'}
+                    </h3>
+                    <p className="font-sans text-[10px] text-purple-200/70 leading-tight">
+                      {language === 'hi' ? 'हिंदी & अंग्रेजी समर्थन' : 'Hindi & English support'}
+                    </p>
+                  </div>
+
+                  {/* Feature 3: Live GPS */}
+                  <div className="glass-card rounded-2xl p-4 border border-emerald-500/20 bg-emerald-950/20 hover:border-emerald-500/40 hover:bg-emerald-950/30 transition-all duration-200 cursor-pointer group">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 group-hover:bg-emerald-500/20 flex items-center justify-center mb-3 transition-all">
+                      <Compass size={18} className="text-emerald-400" />
+                    </div>
+                    <h3 className="font-sans font-bold text-sm text-white mb-1">
+                      {language === 'hi' ? '📍 लाइव जीपीएस' : '📍 Live GPS'}
+                    </h3>
+                    <p className="font-sans text-[10px] text-emerald-200/70 leading-tight">
+                      {language === 'hi' ? 'रीयल-टाइम स्थान ट्रैकिंग' : 'Real-time location sync'}
+                    </p>
+                  </div>
+
+                  {/* Feature 4: Instant Call */}
+                  <div className="glass-card rounded-2xl p-4 border border-pink-500/20 bg-pink-950/20 hover:border-pink-500/40 hover:bg-pink-950/30 transition-all duration-200 cursor-pointer group">
+                    <div className="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 group-hover:bg-pink-500/20 flex items-center justify-center mb-3 transition-all">
+                      <Phone size={18} className="text-pink-400" />
+                    </div>
+                    <h3 className="font-sans font-bold text-sm text-white mb-1">
+                      {language === 'hi' ? '📞 तत्काल कॉल' : '📞 Instant Call'}
+                    </h3>
+                    <p className="font-sans text-[10px] text-pink-200/70 leading-tight">
+                      {language === 'hi' ? '1-टैप आपातकालीन डायल' : '1-tap emergency dial'}
+                    </p>
+                  </div>
+
+                  {/* Feature 5: Smart Diagnosis */}
+                  <div className="glass-card rounded-2xl p-4 border border-orange-500/20 bg-orange-950/20 hover:border-orange-500/40 hover:bg-orange-950/30 transition-all duration-200 cursor-pointer group">
+                    <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 group-hover:bg-orange-500/20 flex items-center justify-center mb-3 transition-all">
+                      <AlertTriangle size={18} className="text-orange-400" />
+                    </div>
+                    <h3 className="font-sans font-bold text-sm text-white mb-1">
+                      {language === 'hi' ? '🤖 स्मार्ट निदान' : '🤖 Smart Diagnosis'}
+                    </h3>
+                    <p className="font-sans text-[10px] text-orange-200/70 leading-tight">
+                      {language === 'hi' ? 'एआई आपातकाल वर्गीकरण' : 'AI crisis classification'}
+                    </p>
+                  </div>
+
+                  {/* Feature 6: Medical Profile */}
+                  <div className="glass-card rounded-2xl p-4 border border-red-500/20 bg-red-950/20 hover:border-red-500/40 hover:bg-red-950/30 transition-all duration-200 cursor-pointer group">
+                    <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 group-hover:bg-red-500/20 flex items-center justify-center mb-3 transition-all">
+                      <LifeBuoy size={18} className="text-red-400" />
+                    </div>
+                    <h3 className="font-sans font-bold text-sm text-white mb-1">
+                      {language === 'hi' ? '🏥 मेडिकल प्रोफ़ाइल' : '🏥 Medical Profile'}
+                    </h3>
+                    <p className="font-sans text-[10px] text-red-200/70 leading-tight">
+                      {language === 'hi' ? 'स्वास्थ्य रिकॉर्ड सिंक' : 'Health record sync'}
+                    </p>
+                  </div>
+
+                  {/* Feature 7: Offline Support */}
+                  <div className="glass-card rounded-2xl p-4 border border-blue-500/20 bg-blue-950/20 hover:border-blue-500/40 hover:bg-blue-950/30 transition-all duration-200 cursor-pointer group">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 group-hover:bg-blue-500/20 flex items-center justify-center mb-3 transition-all">
+                      <WifiOff size={18} className="text-blue-400" />
+                    </div>
+                    <h3 className="font-sans font-bold text-sm text-white mb-1">
+                      {language === 'hi' ? '🛜 ऑफलाइन मोड' : '🛜 Offline Ready'}
+                    </h3>
+                    <p className="font-sans text-[10px] text-blue-200/70 leading-tight">
+                      {language === 'hi' ? 'इंटरनेट के बिना काम करें' : 'Works without internet'}
+                    </p>
+                  </div>
+
+                  {/* Feature 8: SOS Panic */}
+                  <div className="glass-card rounded-2xl p-4 border border-rose-500/20 bg-rose-950/20 hover:border-rose-500/40 hover:bg-rose-950/30 transition-all duration-200 cursor-pointer group">
+                    <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 group-hover:bg-rose-500/20 flex items-center justify-center mb-3 transition-all">
+                      <Siren size={18} className="text-rose-400" />
+                    </div>
+                    <h3 className="font-sans font-bold text-sm text-white mb-1">
+                      {language === 'hi' ? '🚨 एसओएस पैनिक' : '🚨 SOS Panic'}
+                    </h3>
+                    <p className="font-sans text-[10px] text-rose-200/70 leading-tight">
+                      {language === 'hi' ? 'तुरंत सहायता अलर्ट' : 'Instant distress alert'}
+                    </p>
+                  </div>
+
+                  {/* Feature 9: Legal Aid */}
+                  <div className="glass-card rounded-2xl p-4 border border-cyan-500/20 bg-cyan-950/20 hover:border-cyan-500/40 hover:bg-cyan-950/30 transition-all duration-200 cursor-pointer group">
+                    <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 group-hover:bg-cyan-500/20 flex items-center justify-center mb-3 transition-all">
+                      <Megaphone size={18} className="text-cyan-400" />
+                    </div>
+                    <h3 className="font-sans font-bold text-sm text-white mb-1">
+                      {language === 'hi' ? '⚖️ विधिक सहायता' : '⚖️ Legal Aid'}
+                    </h3>
+                    <p className="font-sans text-[10px] text-cyan-200/70 leading-tight">
+                      {language === 'hi' ? 'विशेषज्ञ परामर्श' : 'Expert legal advice'}
+                    </p>
+                  </div>
+                </div>
+              </section>
+
               {/* Bento Grid layout emergency services */}
               <section className="space-y-4">
                 <div className="flex items-center gap-2">
