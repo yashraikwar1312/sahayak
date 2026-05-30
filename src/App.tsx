@@ -822,7 +822,21 @@ export default function App() {
   useEffect(() => {
     if (accessibilityPrompt) {
       startSetupSpeechRecognition();
+      
+      // Safety timeout: If no interaction after 8 seconds, auto-switch to visual mode
+      const safetyTimeout = setTimeout(() => {
+        if (accessibilityPrompt && !isTriageCompleted.current) {
+          console.warn('Voice setup timeout - switching to visual mode');
+          window.speechSynthesis.cancel();
+          stopSetupSpeechRecognition();
+          stopVoiceCommandListener();
+          setVoiceOptimized(false);
+          localStorage.setItem('sahayak_voice_optimized', 'false');
+        }
+      }, 8000);
+      
       return () => {
+        clearTimeout(safetyTimeout);
         stopSetupSpeechRecognition();
         window.speechSynthesis.cancel();
       };
@@ -1348,7 +1362,29 @@ export default function App() {
       {/* Primary Dashboard Contain Canvas */}
       <main className="pt-24 pb-12 px-6 max-w-2xl lg:max-w-6xl xl:max-w-7xl mx-auto w-full transition-all duration-300">
         {voiceOptimized ? (
-          <div id="voice-immersive-portal" className="max-w-4xl mx-auto flex flex-col gap-6 animate-fade-in py-6">
+          <div id="voice-immersive-portal" className="max-w-4xl mx-auto flex flex-col gap-6 animate-fade-in py-6 relative">
+            {/* Emergency Escape Button - Quick Visual Mode Access */}
+            <div className="absolute -top-16 right-0 flex gap-2">
+              <button
+                id="emergency-reset-btn"
+                onClick={() => {
+                  window.speechSynthesis.cancel();
+                  setVoiceOptimized(false);
+                  setAccessibilityPrompt(true);
+                  localStorage.setItem('sahayak_voice_optimized', 'false');
+                  isTriageCompleted.current = false;
+                  setVoiceDiagnosis(null);
+                  setAwaitingCallConfirmation(false);
+                  setLastAnalyzedHelpNumber('');
+                  stopVoiceCommandListener();
+                  stopSetupSpeechRecognition();
+                }}
+                className="px-3 py-1.5 rounded-full bg-red-600/80 hover:bg-red-700 text-white text-xs font-bold border border-red-400/50 shadow-lg"
+                title="Click to switch to visual/touch mode"
+              >
+                ⚡ Tap Instead
+              </button>
+            </div>
             {/* Pulsing Audio Hologram Stage Indicator */}
             <div className="glass-card rounded-3xl p-8 border-2 border-indigo-500/30 bg-indigo-950/20 text-center flex flex-col items-center gap-6 relative overflow-hidden shadow-2xl">
               {/* Spinning / Pulsating holographic ambient glowing orb */}
