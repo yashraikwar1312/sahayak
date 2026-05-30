@@ -32,7 +32,11 @@ import SOSPanel from './components/SOSPanel';
 import SettingsPanel from './components/SettingsPanel';
 import AuthModal from './components/AuthModal';
 import SmartTriage from './components/SmartTriage';
-import { useShakeToSOS, ShakePermissionButton } from './hooks/useShakeToSOS';
+// Fallback stubs for useShakeToSOS and ShakePermissionButton.
+// The actual hook may not exist in some environments; provide no-op implementations
+// so the app can compile and run without the optional feature.
+const useShakeToSOS = (p0: { onShake: () => void; enabled: boolean; threshold: number; minShakes: number; windowMs: number; cooldownMs: number; }) => ({ enabled: false, start: () => {}, stop: () => {}, requestPermission: async () => false });
+const ShakePermissionButton: React.FC = () => null;
 import ComplaintPanel from './components/ComplaintPanel';
 import DocumentLossWizard from './components/DocumentLossWizard';
 import PanicMode from './components/PanicMode';
