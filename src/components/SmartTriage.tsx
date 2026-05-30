@@ -6,17 +6,7 @@
 //   import SmartTriage from './components/SmartTriage';
 //   <SmartTriage language={language} onCall={(number) => ...} />
 
-declare const React: any;
-const { useState, useRef, useCallback } = React;
-
-// Provide a permissive JSX IntrinsicElements for environments missing React types
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [elemName: string]: any;
-    }
-  }
-}
+import React, { useState, useRef, useCallback } from 'react';
 import { Mic, MicOff, Search, Phone, AlertCircle, ChevronRight, Loader2, Zap } from 'lucide-react';
 import { triageNumbers, type EmergencyNumber } from '../data/emergencyNumbers';
 

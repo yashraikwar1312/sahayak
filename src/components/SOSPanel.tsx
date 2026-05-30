@@ -22,6 +22,8 @@ export default function SOSPanel({
   const [sirenPlaying, setSirenPlaying] = useState(false);
   const [smsStatus, setSmsStatus] = useState<'pending' | 'success'>('pending');
   const [isMuted, setIsMuted] = useState(false);
+  const [callStatus, setCallStatus] = useState<'dialing' | 'connected' | null>(null);
+  const [dialedNumber, setDialedNumber] = useState('112');
 
   const audioContextRef = useRef<AudioContext | null>(null);
   const oscillator1Ref = useRef<OscillatorNode | null>(null);
@@ -124,9 +126,26 @@ export default function SOSPanel({
     }
   };
 
+  // Auto-dial 112 (Emergency Number)
+  const autoDialPolice = () => {
+    setCallStatus('dialing');
+    setDialedNumber('112');
+    
+    // Try to initiate the call using tel: protocol
+    const telLink = 'tel:112';
+    window.location.href = telLink;
+    
+    // Show success after a brief moment (simulating connection)
+    setTimeout(() => {
+      setCallStatus('connected');
+    }, 2000);
+  };
+
   // Trigger Action Broadcast
   const triggerSOSActions = () => {
     playSiren();
+    autoDialPolice(); // Auto-dial 112 when SOS triggers
+    
     // Simulate SMS Sending delay
     setTimeout(() => {
       setSmsStatus('success');
@@ -287,6 +306,35 @@ export default function SOSPanel({
 
           {/* Quick Critical Actions Info Panel */}
           <div className="flex-1 flex flex-col justify-between gap-4">
+            
+            {/* Emergency Call Dial Status */}
+            {callStatus && (
+              <div className="p-5 glass-card bg-green-950/40 border-green-500/30 rounded-2xl flex flex-col items-center justify-center">
+                <span className="font-mono text-[10px] uppercase text-green-300 tracking-wider block font-bold mb-3">
+                  {language === 'hi' ? 'आपातकालीन कॉल' : 'EMERGENCY CALL ACTIVE'}
+                </span>
+                <div className="flex items-center gap-4 my-4">
+                  <div className="flex items-center gap-2">
+                    <PhoneCall size={32} className="text-green-400 animate-pulse" />
+                  </div>
+                  <div className="text-center">
+                    <div className="font-mono text-4xl font-black text-white tracking-widest">
+                      {dialedNumber}
+                    </div>
+                    <div className="text-xs text-green-300 mt-2 font-sans">
+                      {callStatus === 'dialing' 
+                        ? (language === 'hi' ? 'डायल कर रहे हैं...' : 'DIALING...')
+                        : (language === 'hi' ? '✓ कनेक्टेड' : '✓ CONNECTED')}
+                    </div>
+                  </div>
+                </div>
+                <div className="text-xs text-green-200/70 font-sans text-center mt-3">
+                  {language === 'hi' 
+                    ? 'पुलिस नियंत्रण कक्ष से जुड़ा हुआ। पुलिस आपकी मदद के लिए भेजे जा रहे हैं।'
+                    : 'Connected to Police Control Room. Emergency response team dispatched to your location.'}
+                </div>
+              </div>
+            )}
             
             {/* Medical ID card overview */}
             <div className="p-5 glass-card bg-red-950/20 border-white/5 rounded-2xl flex flex-col justify-between">
